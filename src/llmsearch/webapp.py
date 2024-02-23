@@ -61,7 +61,8 @@ def generate_index(config: Config):
         vs = None
         gc.collect()
         with torch.no_grad():
-            torch.cuda.empty_cache()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
     st.success("Done generating index.")
 
@@ -148,7 +149,8 @@ def unload_model():
     gc.collect()
 
     with torch.no_grad():
-        torch.cuda.empty_cache()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
 
 @st.cache_data
