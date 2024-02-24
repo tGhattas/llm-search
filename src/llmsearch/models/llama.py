@@ -40,7 +40,12 @@ class CustomLlamaLangChainModel(LLM):
         return cls(**kwargs)
 
     def __del__(self):
-        self.model.__del__()
+        if hasattr(self.model, "__del__"):
+            self.model.__del__()
+        else:
+            logger.warning(
+                "Model does not have a __del__ method, so it may not be properly closed."
+            )
 
     @property
     def _llm_type(self) -> str:
