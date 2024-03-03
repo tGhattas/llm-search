@@ -77,8 +77,7 @@ class SparseEmbeddingsSplade:
             del output
             del tokens
             if torch.cuda.is_available():
-                print(torch.cuda.is_available())
-            #     torch.cuda.synchronize()
+                torch.cuda.synchronize()
 
         return vecs
 

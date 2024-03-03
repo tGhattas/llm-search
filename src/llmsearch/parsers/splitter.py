@@ -11,6 +11,7 @@ from llmsearch.config import Config, Document
 from llmsearch.parsers.doc import docx_splitter
 from llmsearch.parsers.markdown import markdown_splitter
 from llmsearch.parsers.pdf import PDFSplitter
+from llmsearch.parsers.image import image_captioner
 from llmsearch.parsers.unstructured import UnstructuredSplitter, UnstructuredSplitType
 
 
@@ -30,6 +31,8 @@ class DocumentSplitter:
             "epub": UnstructuredSplitter(
                 document_type=UnstructuredSplitType.EPUB
             ).split_document,
+            "png": image_captioner,
+            "jpeg": image_captioner
         }
         self.document_path_settings = config.embeddings.document_settings
         self.chunk_sizes = config.embeddings.chunk_sizes
