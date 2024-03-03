@@ -1,12 +1,9 @@
 from typing import List, Union
 from transformers import VisionEncoderDecoderModel, ViTFeatureExtractor, GPT2Tokenizer
-from torchvision.datasets import CIFAR10
-from torchvision.transforms import ToPILImage
-from torch.utils.data import DataLoader
-from torchvision import transforms
 from transformers import VisionEncoderDecoderModel, ViTFeatureExtractor
-import matplotlib.pyplot as plt
 from PIL import Image
+from pathlib import Path
+
 
 # Initialize the tokenizer
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
