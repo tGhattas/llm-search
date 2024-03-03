@@ -44,6 +44,8 @@ class DocumentExtension(str, Enum):
     epub = "epub"
     docx = "docx"
     doc = "doc"
+    png = "png"
+    jpeg = "jpeg"
 
 
 class RerankerModel(Enum):
