@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Dict, List, Union
 from transformers import VisionEncoderDecoderModel, ViTFeatureExtractor, GPT2Tokenizer
 from transformers import VisionEncoderDecoderModel, ViTFeatureExtractor
 from PIL import Image
@@ -30,7 +30,11 @@ def generate_image_caption(image):
 
 def image_captioner(
     path: Union[str, Path], *args, **additional_splitter_setting
-) -> List[str]:
+) -> List[Dict[str, str]]:
     image = Image.open(path)
     image = preprocess_image(image)
-    return [generate_image_caption(image)]
+    return [{"text":generate_image_caption(image), "metadata":{}}]
+
+if __name__ == "__main__":
+    # Load an image
+    print(image_captioner("/Users/tamer/PycharmProjects/llm-search/notebooks/sample_docs/Screenshot 2024-02-25 at 14.27.19.png"))
