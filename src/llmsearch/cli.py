@@ -93,7 +93,7 @@ def launch_qa_with_llm(doc_config_file: str, model_config_file: str):
     "-c",
     "doc_config_path",
     required=True,
-    type=click.Path(exists=True, dir_okay=True, file_okay=False),
+    type=click.Path(exists=True, dir_okay=False, file_okay=True),
     help="Specifies documents YAML configuration file",
 )
 @click.option(
