@@ -11,6 +11,9 @@ import torch
 import yaml
 from dotenv import load_dotenv
 from loguru import logger
+import sys
+logger.remove()
+logger.add(sys.stderr, level="TRACE")
 from streamlit import chat_message
 
 from llmsearch.config import Config
