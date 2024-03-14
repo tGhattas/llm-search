@@ -191,8 +191,11 @@ def reload_model(doc_config_path: str, model_config_file: str):
     logger.debug(f"Reload model got MODEL CONFIG FILE NAME: {model_config_file}")
     with st.spinner("Loading configuration"):
         config = load_config(doc_config_path, model_config_file)
+        st.info(f"Loaded config: {config}")
         if config.check_embeddings_exist():
+            st.info("Embeddings found, loading model...")
             st.session_state["llm_bundle"] = get_llm_bundle(config)
+            st.info(f"Model loaded?  {st.session_state['llm_bundle'] is not None}")
             st.session_state["llm_config"] = {"config": config, "doc_config_path": doc_config_path, "model_config_file": model_config_file}
         else:
             st.error(
@@ -244,6 +247,7 @@ if Path(args.cli_doc_config_path).is_dir():
 
 
 if st.session_state["llm_bundle"] is not None:
+    
     config = st.session_state["llm_config"]["config"]
 
     doc_config_path = st.session_state["llm_config"]["doc_config_path"]
