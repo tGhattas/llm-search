@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from loguru import logger
 import sys
 logger.remove()
-logger.add("file.log", level="TRACE")
+logger.add("file.log", level="DEBUG")
 from streamlit import chat_message
 
 from llmsearch.config import Config
